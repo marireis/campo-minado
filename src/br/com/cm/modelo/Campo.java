@@ -73,7 +73,6 @@ public class Campo {
 		minado = true;
 	}
 	
-	
 	public boolean isMarcado() {//metodo publico que nao geral nenhum efeito colateral
 		return marcado;
 	}
@@ -84,5 +83,31 @@ public class Campo {
 	
 	public boolean isFechado() {
 		return !aberto;
+	}
+
+	public int getLinha() {
+		return linha;
+	}
+
+	public int getColuna() {
+		return coluna;
+	}
+	
+	boolean objetivoAlcancado() {
+		boolean desvendado = !minado && aberto;//campo seguro
+		boolean protegido = minado && marcado;//campo protegido
+		
+		return desvendado || protegido;
+	}
+	
+	long minasNaVizinhanca() {//mostra os numeros da vizinhanca
+		return vizinhos.stream().filter(v -> v.minado).count();
+		
+	}
+	
+	void reiniciar() {
+		aberto =  false;
+		minado = false;
+		marcado = false;
 	}
 }
