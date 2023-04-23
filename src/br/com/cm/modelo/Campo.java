@@ -124,7 +124,11 @@ public class Campo {
 		} else if(aberto) {
 			return " ";
 		} else {
-			return "?";//mina nao foi mexida, nao sei o que tem em baixo dela
+			return "?";
 		}
+	}
+
+	void setAberto(boolean aberto) {
+		this.aberto = aberto;
 	}
 }
