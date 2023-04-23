@@ -105,9 +105,23 @@ public class Campo {
 		
 	}
 	
-	void reiniciar() {
-		aberto =  false;
+	void reiniciar() {//zera, reinicia o jogo
+		aberto = false;
 		minado = false;
 		marcado = false;
+	}
+	
+	public String toString() {
+		if(marcado) {
+			return "x";
+		} else if(aberto && minado) {
+			return "*";
+		} else if(aberto && minasNaVizinhanca() > 0) {
+			return Long.toString(minasNaVizinhanca());
+		} else if(aberto) {
+			return " ";
+		} else {
+			return "?";//mina nao foi mexida, nao sei o que tem em baixo dela
+		}
 	}
 }
